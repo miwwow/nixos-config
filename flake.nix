@@ -4,7 +4,10 @@
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
   };
 
-  outputs = { self, nixpkgs, spicetify-nix, ... }@inputs: {
+  outputs = { self, nixpkgs, spicetify-nix, ... }@inputs: 
+  let
+    hostname = "nixos";
+  in {
     nixosConfigurations = {
       nixos = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
