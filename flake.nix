@@ -1,5 +1,7 @@
 {
   inputs = {
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+
     milk-grub-theme.url = "github:gemakfy/MilkGrub";
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
   };
