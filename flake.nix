@@ -12,13 +12,9 @@
       nixpkgs,
       spicetify-nix,
       ...
-    }@inputs:
-    let
-      hostname = "nixos";
-    in
-    {
+    }@inputs: {
       nixosConfigurations = {
-        hostname = nixpkgs.lib.nixosSystem {
+        nixos = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = { inherit inputs; };
           modules = [
