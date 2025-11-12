@@ -18,7 +18,7 @@
     in
     {
       nixosConfigurations = {
-        nixos = nixpkgs.lib.nixosSystem {
+        hostname = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = { inherit inputs; };
           modules = [
