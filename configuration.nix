@@ -5,10 +5,10 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
   # Bootloader.
   boot.loader = {
@@ -26,7 +26,7 @@
     };
     timeout = null;
   };
-  
+
   # Set RTC time to local, fixes issues with windows dualboot desync.
   time.hardwareClockInLocalTime = true;
 
@@ -34,7 +34,10 @@
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   # Enable flakes.
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -100,8 +103,8 @@
   # Enable touchpad support (enabled default in most desktopManager).
   services.libinput.enable = true;
 
-  # Enable OpenTabletDriver. 
-  hardware.opentabletdriver.enable = true;  
+  # Enable OpenTabletDriver.
+  hardware.opentabletdriver.enable = true;
   hardware.opentabletdriver.blacklistedKernelModules = [
     "hid-uclogic"
     "wacom"
@@ -119,18 +122,21 @@
   users.users.mikuhatsune = {
     isNormalUser = true;
     description = "Hatsune Miku";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
     packages = with pkgs; [
       kdePackages.kate
       kdePackages.kget
       kdePackages.ktorrent
       krusader
       (discord.override {
-	withVencord = true;
+        withVencord = true;
       })
       vscode
       krita
-    #  thunderbird
+      #  thunderbird
     ];
   };
 
