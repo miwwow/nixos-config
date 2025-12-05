@@ -19,7 +19,7 @@
       module_paths = [
         inputs.milk-grub-theme.nixosModule
         spicetify-nix.nixosModules.spicetify
-        ./configuration.nix
+        ./system
         ./apps
       ];
     in
@@ -29,6 +29,7 @@
           system = "x86_64-linux";
           specialArgs = {
             inherit inputs outputs;
+            hostname = "nixos";
           };
           modules = module_paths;
         };
