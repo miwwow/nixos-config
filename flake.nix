@@ -19,7 +19,9 @@
       module_paths = [
         inputs.milk-grub-theme.nixosModule
         spicetify-nix.nixosModules.spicetify
+
         ./system
+        ./desktop
         ./apps
       ];
     in
