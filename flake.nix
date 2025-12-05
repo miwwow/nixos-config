@@ -12,7 +12,8 @@
       nixpkgs,
       spicetify-nix,
       ...
-    }@inputs: {
+    }@inputs:
+    {
       nixosConfigurations = {
         nixos = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
