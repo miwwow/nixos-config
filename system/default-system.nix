@@ -81,6 +81,15 @@
     variant = "";
   };
 
+  home-manager = {
+    extraSpecialArgs = {
+      inherit inputs outputs;
+    };
+    users = {
+      mikuhatsune = import ./home.nix;
+    };
+  };
+
   # TODO: move this to apps
   programs.firefox.enable = true;
 
