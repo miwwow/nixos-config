@@ -6,7 +6,8 @@
   config,
   pkgs,
   ...
-}: {
+}:
+{
   # You can import other NixOS modules here
   imports = [
     # If you want to use modules your own flake exports (from modules/nixos):
@@ -50,8 +51,8 @@
 
   nix = {
     settings = {
-			# Limit number of running jobs, prevents hanging on CPUs with many cores.
-			max-jobs = 8;
+      # Limit number of running jobs, prevents hanging on CPUs with many cores.
+      max-jobs = 8;
       # Enable flakes and new 'nix' command
       experimental-features = "nix-command flakes";
       # Opinionated: disable global registry
@@ -66,14 +67,17 @@
     efi.canTouchEfiVariables = true;
     grub = {
       enable = true;
-      devices = ["nodev"];
+      devices = [ "nodev" ];
       efiSupport = true;
-			gfxmodeEfi = "2560x1600";
-			gfxpayloadEfi = "keep";
-			milk-theme.enable = true;
+      gfxmodeEfi = "2560x1600";
+      gfxpayloadEfi = "keep";
+      milk-theme.enable = true;
       useOSProber = true;
     };
   };
+
+  # System level packages.
+  environment.systemPackages = [ pkgs.nixfmt ];
 
   # Enable git, required for flakes.
   programs.git.enable = true;
@@ -90,7 +94,7 @@
       isNormalUser = true;
       openssh.authorizedKeys.keys = [
       ];
-      extraGroups = ["wheel"];
+      extraGroups = [ "wheel" ];
     };
   };
 
