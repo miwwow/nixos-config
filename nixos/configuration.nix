@@ -79,9 +79,6 @@
   # System level packages.
   environment.systemPackages = [ pkgs.nixfmt ];
 
-  # Enable git, required for flakes.
-  programs.git.enable = true;
-
   # Enable GNOME.
   services.xserver.enable = true;
   services.displayManager.gdm.enable = true;
