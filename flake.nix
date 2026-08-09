@@ -40,26 +40,23 @@
       # Available through 'nixos-rebuild --flake .#your-hostname'
       nixosConfigurations = {
         empty-sekai = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
           specialArgs = { inherit inputs; };
           modules = [
             # > Our main nixos configuration file <
             ./nixos/configuration.nix
 
-            inputs.milk-grub-theme.nixosModule
-          ];
-        };
-      };
+            home-manager.nixosModules.default
+            {
+              home-manager = {
+                useGlobalPkgs = false;
+                useUserPackages = true;
+                extraSpecialArgs = { inherit inputs; };
+                users.hatsunemiku = import ./home-manager/home.nix;
+              };
+            }
 
-      # Standalone home-manager configuration entrypoint
-      # Available through 'home-manager --flake .#your-username@your-hostname'
-      homeConfigurations = {
-        "hatsunemiku@empty-sekai" = home-manager.lib.homeManagerConfiguration {
-          # Home-manager requires 'pkgs' instance
-          pkgs = nixpkgs.legacyPackages.x86_64-linux;
-          extraSpecialArgs = { inherit inputs; };
-          modules = [
-            # > Our main home-manager configuration file <
-            ./home-manager/home.nix
+            inputs.milk-grub-theme.nixosModule
           ];
         };
       };
