@@ -68,6 +68,9 @@
       enable = true;
       devices = ["nodev"];
       efiSupport = true;
+			gfxmodeEfi = "2560x1600";
+			gfxpayloadEfi = "keep";
+			milk-theme.enable = true;
       useOSProber = true;
     };
   };
