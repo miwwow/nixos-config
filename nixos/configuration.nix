@@ -2,21 +2,25 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
-  imports =
-    [
-      ./hardware-configuration.nix
-    ];
+  imports = [
+    ./hardware-configuration.nix
+  ];
 
-  nix.settings.experimental-features = [ 
+  nix.settings.experimental-features = [
     "nix-command"
     "flakes"
   ];
 
   boot.loader = {
-      grub = {
+    grub = {
       enable = true;
       device = "nodev";
       useOSProber = true;
@@ -45,9 +49,14 @@
   services.dbus.enable = true;
 
   security.polkit.enable = true;
-  security.pam.services.swaylock = {};
+  security.pam.services.swaylock = { };
   security.pam.loginLimits = [
-    { domain = "@users"; item = "rtprio"; type = "-"; value = "1"; }
+    {
+      domain = "@users";
+      item = "rtprio";
+      type = "-";
+      value = "1";
+    }
   ];
 
   xdg.portal = {
@@ -71,7 +80,11 @@
 
   users.users.hatsunemiku = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "audio" "video" ];
+    extraGroups = [
+      "wheel"
+      "audio"
+      "video"
+    ];
     packages = with pkgs; [
       tree
     ];

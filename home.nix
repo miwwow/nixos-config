@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 {
   home.username = "hatsunemiku";
   home.homeDirectory = "/home/hatsunemiku";
@@ -40,9 +45,18 @@
         "XF86MonBrightnessUp" = "exec brightnessctl set +5%";
       };
       startup = [
-        { command = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"; always = true; }
-        { command = "systemctl --user restart waybar"; always = true; }
-        { command = "systemctl --user restart mako"; always = true; }
+        {
+          command = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+          always = true;
+        }
+        {
+          command = "systemctl --user restart waybar";
+          always = true;
+        }
+        {
+          command = "systemctl --user restart mako";
+          always = true;
+        }
       ];
     };
   };
@@ -50,24 +64,30 @@
   services.kanshi = {
     enable = true;
     settings = [
-      { output.criteria = "eDP-1";
+      {
+        output.criteria = "eDP-1";
         output.mode = "2560x1600@165Hz";
         output.scale = 1.5;
       }
-      { profile.name = "docked";
+      {
+        profile.name = "docked";
         profile.outputs = [
-          { criteria = "DP-1";
+          {
+            criteria = "DP-1";
             mode = "1920x1080@180Hz";
             position = "0,0";
           }
-          { criteria = "eDP-1";
+          {
+            criteria = "eDP-1";
             position = "1920,0";
           }
         ];
       }
-      { profile.name = "undocked";
+      {
+        profile.name = "undocked";
         profile.outputs = [
-          { criteria = "eDP-1";
+          {
+            criteria = "eDP-1";
           }
         ];
       }
@@ -81,8 +101,12 @@
       key = "~/.ssh/id_ed25519.pub";
     };
     settings = {
-      init = { defaultBranch = "main"; };
-      push = { autoSetupRemote = true; };
+      init = {
+        defaultBranch = "main";
+      };
+      push = {
+        autoSetupRemote = true;
+      };
       gpg.format = "ssh";
       user = {
         name = "miwwow";
