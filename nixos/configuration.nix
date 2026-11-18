@@ -104,5 +104,12 @@
     brightnessctl
   ];
 
+  fonts.packages = with pkgs; [
+    noto-fonts
+    noto-fonts-cjk-sans
+    noto-fonts-color-emoji
+    font-awesome
+  ];
+
   system.stateVersion = "26.05";
 }
