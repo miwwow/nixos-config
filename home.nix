@@ -177,5 +177,8 @@
     slurp
     polkit_gnome
     kanshi
+    clojure
+    rlwrap
+    jdk
   ];
 }
