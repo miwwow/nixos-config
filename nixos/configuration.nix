@@ -20,6 +20,9 @@
     "flakes"
   ];
 
+  home-manager.backupFileExtension = "bkp";
+  home-manager.overwriteBackup = true;
+
   boot.loader = {
     grub = {
       enable = true;
