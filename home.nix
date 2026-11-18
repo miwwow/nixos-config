@@ -34,6 +34,9 @@
         "${modifier}+Shift+Up" = "move up";
         "${modifier}+Shift+Down" = "move down";
 
+        "${modifier}+Shift+minus" = "move scratchpad";
+        "${modifier}+minus" = "scratchpad show";
+
         "${modifier}+f" = "fullscreen";
         "${modifier}+space" = "floating toggle";
 
