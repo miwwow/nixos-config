@@ -117,6 +117,12 @@
         email = "admin@mirror.gay";
       };
     };
+    includes = [
+      {
+        condition = "gitdir:~/university/";
+        contents = import ./university-git.nix;
+      }
+    ];
   };
 
   programs.librewolf = {
