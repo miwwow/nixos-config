@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  nur,
   pkgs,
   ...
 }:
@@ -111,6 +112,48 @@
       user = {
         name = "miwwow";
         email = "admin@mirror.gay";
+      };
+    };
+  };
+
+  programs.librewolf = {
+    enable = true;
+    settings = {
+      "webgl.disabled" = true;
+      "privacy.resistFingerprinting" = true;
+      "privacy.clearOnShutdown.history" = false;
+      "privacy.clearOnShutdown.cookies" = false;
+      "network.cookie.lifetimePolicy" = 0;
+    };
+    profiles = {
+      default = {
+        search.default = "ddg";
+        search.engines = {
+          nixpkgs = {
+            name = "Nixpkgs";
+            urls = [
+              {
+                template = "https://search.nixos.org/packages";
+                params = [
+                  {
+                    name = "type";
+                    value = "packages";
+                  }
+                  {
+                    name = "query";
+                    value = "{searchTerms}";
+                  }
+                ];
+              }
+            ];
+          };
+        };
+        extensions = {
+          packages = with pkgs.nur.repos.rycee.firefox-addons; [
+            ublock-origin
+            proton-pass
+          ];
+        };
       };
     };
   };

@@ -5,6 +5,7 @@
 {
   config,
   lib,
+  nur,
   pkgs,
   ...
 }:
@@ -93,6 +94,9 @@
   programs.firefox.enable = true;
 
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.overlays = [
+    nur.overlays.default
+  ];
 
   environment.systemPackages = with pkgs; [
     kitty
