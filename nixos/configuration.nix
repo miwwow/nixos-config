@@ -91,8 +91,6 @@
     ];
   };
 
-  programs.firefox.enable = true;
-
   nixpkgs.config.allowUnfree = true;
   nixpkgs.overlays = [
     nur.overlays.default
